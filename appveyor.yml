@@ -1,25 +1,25 @@
 os: Visual Studio 2017
 
+environment:
+  GITHUB_AUTH_TOKEN:
+    secure: oMtSbx6bGZXxWF2g6B81lhoFXPkYg9LbTseWEH/mhSJH18ND4Uc8Nd+OXrvGKqPp
+
 platform:
   - x64
 
 branches:
   only:
-    - /master|^v\d+\.\d+\.\d+$/
+    - /master|^v\d+\.\d+\.\d+.*$/
 
 install:
-  - ps: Install-Product node 10 x64
+  - ps: Install-Product node 8.2.1 x64
   - yarn install --force
 
 build_script:
   - yarn check-prettier
   - yarn build
   - ./script/test-appveyor.bat
-  - yarn prebuild-node
-  - yarn prebuild-node-ia32
-  - yarn prebuild-electron
-  - yarn prebuild-electron-ia32
-  - if defined APPVEYOR_REPO_TAG_NAME (npm run upload)
+  - ps: ./script/build.ps1
 
 test: off
 deploy: off

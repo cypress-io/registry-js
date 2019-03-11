@@ -1,49 +1,46 @@
 {
-  "name": "registry-js",
-  "version": "1.3.2",
+  "name": "@cypress/registry-js",
+  "version": "1.3.2-patch29",
   "description": "A simple and opinionated library for working with the Windows registry",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index.d.ts",
   "scripts": {
-    "install": "prebuild-install || node-gyp rebuild",
+    "install": "yarn run prebuild-install || yarn run gyp-rebuild",
+    "prebuild-install": "node script/prebuild-install.js",
+    "gyp-rebuild": "node script/rebuild.js || true",
     "build": "tsc",
     "pretest": "yarn build",
     "test": "jest -c jest.json",
-    "prepublish": "yarn build && yarn test",
+    "prepublish": "yarn build",
     "postpublish": "git push --follow-tags",
     "benchmark": "ts-node benchmarks/reg.ts",
     "prettier": "prettier --write lib/*.ts test/*.ts",
-    "check-prettier": "prettier --list-different lib/*.ts test/*.ts",
-    "prebuild-node": "prebuild -t 8.9.0 -t 9.4.0 -t 10.11.0 -t 11.9.0 --strip",
-    "prebuild-node-ia32": "prebuild -t 8.9.0 -t 9.4.0 -a ia32 --strip",
-    "prebuild-electron": "prebuild -t 2.0.0 -t 3.0.0 -t 4.0.4 -r electron --strip",
-    "prebuild-electron-ia32": "prebuild -t 2.0.0 -t 3.0.0 -t 4.0.4 -r electron -a ia32 --strip",
-    "upload": "node ./script/upload.js"
+    "check-prettier": "prettier --list-different lib/*.ts test/*.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/desktop/registry-js.git"
+    "url": "git+https://github.com/cypress-io/registry-js.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/desktop/registry-js/issues"
+    "url": "https://github.com/cypress-io/registry-js/issues"
   },
-  "homepage": "https://github.com/desktop/registry-js#readme",
+  "homepage": "https://github.com/cypress-io/registry-js#readme",
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
     "@types/jest": "^24.0.0",
     "@types/node": "^11.9.0",
     "benchmark": "^2.1.4",
     "jest": "^24.0.0",
-    "prebuild": "^8.1.2",
     "prettier": "^1.14.2",
     "ts-node": "^8.0.1",
     "typescript": "^3.0.1"
   },
   "dependencies": {
     "nan": "^2.10.0",
+    "prebuild": "^8.1.2",
     "prebuild-install": "^5.2.4"
   }
 }

@@ -1,7 +1,10 @@
-const nativeModule =
-  process.platform === "win32"
-    ? require("../../build/Release/registry.node")
-    : null;
+const requirePath = (process.versions as any).electron
+  ? "../../build-electron/Release/registry.node" // built for Cypress's Electron
+  : process.versions.node === "8.2.1"
+  ? "../../build-node/Release/registry.node" // built for Cypress's node version
+  : "../build/Release/registry.node"; // built for node version @ npm install
+
+const nativeModule = process.platform === "win32" ? require(requirePath) : null;
 
 /**
  * Utility function used to achieve exhaustive type checks at compile time.

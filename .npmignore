@@ -3,7 +3,6 @@
 benchmarks/
 docs/
 lib/
-script/
 test/
 .gitattributes
 appveyor.yml
