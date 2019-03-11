@@ -1,6 +1,11 @@
+const requirePath =
+  process.versions.electron
+    ? '../../build-electron/Release/registry.node'
+    : '../../build-node/Release/registry.node';
+
 const nativeModule =
   process.platform === "win32"
-    ? require("../../build/Release/registry.node")
+    ? require(requirePath)
     : null;
 
 /**
