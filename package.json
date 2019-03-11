@@ -1,6 +1,6 @@
 {
   "name": "@cypress/registry-js",
-  "version": "1.3.2-patch1",
+  "version": "1.3.2-patch2",
   "description": "A simple and opinionated library for working with the Windows registry",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index.d.ts",
@@ -16,10 +16,10 @@
     "benchmark": "ts-node benchmarks/reg.ts",
     "prettier": "prettier --write lib/*.ts test/*.ts",
     "check-prettier": "prettier --list-different lib/*.ts test/*.ts",
-    "prebuild-node": "prebuild -t 8.2.1 --strip",
-    "prebuild-node-ia32": "prebuild -t 8.2.1 -a ia32 --strip",
-    "prebuild-electron": "prebuild -t 1.8.2 -r electron --strip",
-    "prebuild-electron-ia32": "prebuild -t 1.8.2 -r electron -a ia32 --strip",
+    "prebuild-node": "prebuild -t 8.2.1 -t 8.9.0 -t 9.4.0 -t 10.11.0 -t 11.9.0 --strip",
+    "prebuild-node-ia32": "prebuild -t 8.2.1 -t 8.9.0 -t 9.4.0 -t 10.11.0 -t 11.9.0 -a ia32 --strip",
+    "prebuild-electron": "prebuild -t 1.8.2 -t 2.0.0 -t 3.0.0 -t 4.0.4 -r electron --strip",
+    "prebuild-electron-ia32": "prebuild -t 1.8.2 -t 2.0.0 -t 3.0.0 -t 4.0.4 -r electron -a ia32 --strip",
     "upload": "node ./script/upload.js"
   },
   "repository": {
