@@ -1,13 +1,13 @@
 {
   "name": "@cypress/registry-js",
-  "version": "1.3.2-patch8",
+  "version": "1.3.2-patch9",
   "description": "A simple and opinionated library for working with the Windows registry",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index.d.ts",
   "scripts": {
     "install": "yarn run prebuild-install || yarn run gyp-rebuild",
     "prebuild-install": "prebuild-install -t 8.2.1 -r node && move build build-node && prebuild-install -t 1.8.2 -r electron && move build build-electron && prebuild-install",
-    "gyp-rebuild": "node-gyp rebuild && move build build-node",
+    "gyp-rebuild": "node-gyp rebuild",
     "build": "tsc",
     "pretest": "yarn build",
     "test": "jest -c jest.json",
