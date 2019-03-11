@@ -1,12 +1,8 @@
-const requirePath =
-  (process.versions as any).electron
-    ? '../../build-electron/Release/registry.node'
-    : '../../build-node/Release/registry.node';
+const requirePath = (process.versions as any).electron
+  ? "../../build-electron/Release/registry.node"
+  : "../../build-node/Release/registry.node";
 
-const nativeModule =
-  process.platform === "win32"
-    ? require(requirePath)
-    : null;
+const nativeModule = process.platform === "win32" ? require(requirePath) : null;
 
 /**
  * Utility function used to achieve exhaustive type checks at compile time.
