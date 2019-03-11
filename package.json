@@ -1,6 +1,6 @@
 {
   "name": "@cypress/registry-js",
-  "version": "1.3.2-patch4",
+  "version": "1.3.2-patch5",
   "description": "A simple and opinionated library for working with the Windows registry",
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index.d.ts",
@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/desktop/registry-js.git"
+    "url": "git+https://github.com/cypress-io/registry-js.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/desktop/registry-js/issues"
+    "url": "https://github.com/cypress-io/registry-js/issues"
   },
-  "homepage": "https://github.com/desktop/registry-js#readme",
+  "homepage": "https://github.com/cypress-io/registry-js#readme",
   "devDependencies": {
     "@types/benchmark": "^1.0.31",
     "@types/jest": "^24.0.0",
