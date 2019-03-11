@@ -5,7 +5,8 @@
   "main": "dist/lib/index.js",
   "typings": "dist/lib/index.d.ts",
   "scripts": {
-    "install": "prebuild-install || yarn run gyp-rebuild",
+    "install": "yarn run prebuild-install || yarn run gyp-rebuild",
+    "prebuild-install": "prebuild-install -t 8.2.1 -r node && mv build build-node && prebuild-install -t 1.8.2 -r electron && mv build build-electron && prebuild-install",
     "gyp-rebuild": "node-gyp rebuild && mv build build-node",
     "build": "tsc",
     "pretest": "yarn build",
@@ -15,10 +16,10 @@
     "benchmark": "ts-node benchmarks/reg.ts",
     "prettier": "prettier --write lib/*.ts test/*.ts",
     "check-prettier": "prettier --list-different lib/*.ts test/*.ts",
-    "prebuild-node": "prebuild -t 8.2.1 --strip --path ./build-node",
-    "prebuild-node-ia32": "prebuild -t 8.2.1 -a ia32 --strip --path ./build-node",
-    "prebuild-electron": "prebuild -t 1.8.2 -r electron --strip --path ./build-electron",
-    "prebuild-electron-ia32": "prebuild -t 1.8.2 -r electron -a ia32 --strip --path ./build-electron",
+    "prebuild-node": "prebuild -t 8.2.1 --strip",
+    "prebuild-node-ia32": "prebuild -t 8.2.1 -a ia32 --strip",
+    "prebuild-electron": "prebuild -t 1.8.2 -r electron --strip",
+    "prebuild-electron-ia32": "prebuild -t 1.8.2 -r electron -a ia32 --strip",
     "upload": "node ./script/upload.js"
   },
   "repository": {
