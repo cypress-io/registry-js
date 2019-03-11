@@ -1,5 +1,5 @@
 const requirePath =
-  process.versions.electron
+  (process.versions as any).electron
     ? '../../build-electron/Release/registry.node'
     : '../../build-node/Release/registry.node';
 
