@@ -10,12 +10,13 @@ process.chdir(path.join(__dirname, '..'))
 
 function prebuildInstall(cmdline) {
   try {
+    const cmd = path.join(
+      __dirname.split('node_modules')[0],
+      'node_modules/.bin/prebuild-install' + (process.platform === 'win32' ? '.cmd' : '')
+    ) + ' ' + cmdline
+    log('Running ' + cmd)
     return execSync(
-      path.join(
-        __dirname,
-        '../node_modules/.bin/prebuild-install' + (process.platform === 'win32' ? '.cmd' : '')
-      ) + ' ' +
-      cmdline,
+      cmd,
       { stdio: 'inherit' }
     )
   } catch (e) {
