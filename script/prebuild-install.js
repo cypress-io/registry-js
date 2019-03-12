@@ -11,7 +11,7 @@ process.chdir(path.join(__dirname, '..'))
 function prebuildInstall(cmdline) {
   try {
     const cmd = path.join(
-      (__dirname.indexOf('node_modules') !== -1 ? __dirname.split('node_modules')[0] : _dirname + '/..'),
+      (__dirname.indexOf('node_modules') !== -1 ? __dirname.split('node_modules')[0] : __dirname + '/..'),
       'node_modules/.bin/prebuild-install' + (process.platform === 'win32' ? '.cmd' : '')
     ) + ' ' + cmdline
     log('Running ' + cmd)
