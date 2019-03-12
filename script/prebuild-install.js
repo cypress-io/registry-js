@@ -9,14 +9,19 @@ function log(msg) {
 process.chdir(path.join(__dirname, '..'))
 
 function prebuildInstall(cmdline) {
-  return spawnSync(
-    path.join(
-      'node_modules/.bin/prebuild-install' +
-      (process.platform === 'win32' ? '.cmd' : '')
-    ),
-    cmdline.split(' '),
-    { stdio: 'inherit' }
-  )
+  try {
+    return execSync(
+      path.join(
+        __dirname,
+        '../node_modules/.bin/prebuild-install' + (process.platform === 'win32' ? '.cmd' : '')
+      ) + ' ' +
+      cmdline,
+      { stdio: 'inherit' }
+    )
+  } catch (e) {
+    log('Exiting because of failed prebuild-install step')
+    process.exit(1)
+  }
 }
 
 function tryUnlink(fn) {
@@ -34,12 +39,12 @@ log('Cleaning up old installs');
 ['build', 'build-node', 'build-electron', 'prebuilds'].map(tryUnlink)
 
 log('Installing for node 8.2.1')
-prebuildInstall('-t 8.2.1 -r node')
+prebuildInstall('-t 8.2.1 -r node --verbose')
 renameSync('build', 'build-node')
 
 log('Installing for electron 1.8.2')
-prebuildInstall('-t 1.8.2 -r electron')
+prebuildInstall('-t 1.8.2 -r electron --verbose')
 renameSync('build', 'build-electron')
 
 log('Installing for system node')
-prebuildInstall()
+prebuildInstall('--verbose')
